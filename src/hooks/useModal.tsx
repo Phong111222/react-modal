@@ -1,7 +1,7 @@
-import { ReactNode, useEffect, useRef, useState } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import Modal from '../Modal';
 import ReactDOM from 'react-dom/client';
-import { root as defaultRoot } from '../main';
+
 import { DESTROY_STATE, DestroyStateValue, MAX_DURATION } from '../constant';
 
 type ShowProps = {

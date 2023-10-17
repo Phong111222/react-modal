@@ -1,4 +1,4 @@
-import { FC, ReactNode, useEffect, useRef, useState } from 'react';
+import { FC, ReactNode, useEffect, useState } from 'react';
 import { GlobalStyle } from './styled/GlobalStyle';
 import { ModalBackground } from './styled/ModalBackground';
 import { ModalContainer } from './styled/ModalContainer';
@@ -31,15 +31,9 @@ const Modal: FC<Props> = ({
 }) => {
   const [modalState, setModalState] = useState<ModalStateValue>('unmounted');
 
-  const containerRef = useRef<Element>();
-
   const _onClose = () => {
     setModalState(MODAL_STATE.UNMOUNTED);
   };
-
-  useEffect(() => {
-    containerRef.current = document.body;
-  }, []);
 
   useEffect(() => {
     if (modalState === MODAL_STATE.UNMOUNTED && !open) {
@@ -84,7 +78,7 @@ const Modal: FC<Props> = ({
               {showFooter && <ModalFooter footer={footer} />}
             </ModalContainer>
           </ModalBackground>,
-          containerRef.current as Element
+          document.body
         )}
     </>
   );
