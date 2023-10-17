@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { MODAL_STATE, ModalStateValue } from '../constant';
+import { MAX_DURATION, MODAL_STATE, ModalStateValue } from '../constant';
 import { ZoomIn, ZoomOut } from './Animation';
 
 export const ModalContainer = styled.div<{ $state: ModalStateValue }>`
@@ -16,11 +16,11 @@ export const ModalContainer = styled.div<{ $state: ModalStateValue }>`
   ${({ $state: state }) =>
     state === MODAL_STATE.MOUNTED
       ? css`
-          animation: ${ZoomIn} 400ms;
+          animation: ${ZoomIn} ${MAX_DURATION}ms;
         `
       : state === MODAL_STATE.UNMOUNTING
       ? css`
-          animation: ${ZoomOut} 400ms;
+          animation: ${ZoomOut} ${MAX_DURATION}ms;
         `
       : css`
           display: none;

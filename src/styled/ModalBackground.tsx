@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { MODAL_STATE, ModalStateValue } from '../constant';
+import { MAX_DURATION, MODAL_STATE, ModalStateValue } from '../constant';
 import { FadeIn, FadeOut } from './Animation';
 
 export const ModalBackground = styled.div<{
@@ -19,11 +19,11 @@ export const ModalBackground = styled.div<{
   ${({ $state: state }) =>
     state === MODAL_STATE.MOUNTED
       ? css`
-          animation: ${FadeIn} linear 400ms;
+          animation: ${FadeIn} linear ${MAX_DURATION}ms;
         `
       : state === MODAL_STATE.UNMOUNTING
       ? css`
-          animation: ${FadeOut} linear 400ms;
+          animation: ${FadeOut} linear ${MAX_DURATION}ms;
         `
       : css`
           display: none;
