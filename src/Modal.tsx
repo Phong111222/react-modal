@@ -13,6 +13,7 @@ interface Props extends ModalHeaderProps, ModalFooterProps {
   children?: ReactNode;
   showFooter?: boolean;
   open: boolean;
+  zIndex?: number;
 }
 
 const Modal: FC<Props> = ({
@@ -24,6 +25,7 @@ const Modal: FC<Props> = ({
   children,
   onClose,
   open,
+  zIndex,
 }) => {
   const [modalState, setModalState] = useState<ModalStateValue>('unmounted');
 
@@ -57,7 +59,7 @@ const Modal: FC<Props> = ({
       <GlobalStyle />
       {modalState !== MODAL_STATE.UNMOUNTED &&
         createPortal(
-          <ModalBackground $state={modalState}>
+          <ModalBackground $zIndex={zIndex} $state={modalState}>
             <ModalContainer $state={modalState}>
               {header || (
                 <ModalHeader
@@ -70,7 +72,7 @@ const Modal: FC<Props> = ({
               {showFooter && <ModalFooter footer={footer} />}
             </ModalContainer>
           </ModalBackground>,
-          document.body
+          document.getElementById('react-modal') || document.body
         )}
     </>
   );
