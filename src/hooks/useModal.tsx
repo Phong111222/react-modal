@@ -1,8 +1,8 @@
-import { ReactNode, useEffect, useState } from 'react';
-import Modal from '../Modal';
-import ReactDOM from 'react-dom/client';
+import { ReactNode, useEffect, useState } from "react";
+import Modal from "../Modal";
+import ReactDOM from "react-dom/client";
 
-import { DESTROY_STATE, DestroyStateValue, MAX_DURATION } from '../constant';
+import { DESTROY_STATE, DestroyStateValue, MAX_DURATION } from "../constant";
 
 type ShowProps = {
   title: string;
@@ -15,12 +15,12 @@ type ModalItem = {
   open: boolean;
 } & Partial<ShowProps>;
 
-const modalId = 'react-modal';
+const modalId = "react-modal";
 
 let modalContainer = document.getElementById(modalId);
 
 if (!modalContainer) {
-  modalContainer = document.createElement('div');
+  modalContainer = document.createElement("div");
   modalContainer.id = modalId;
   document.body.append(modalContainer);
 }
@@ -29,7 +29,7 @@ const root = ReactDOM.createRoot(modalContainer);
 
 const useModal = () => {
   const [modalList, setModalList] = useState<ModalItem[]>([]);
-  const [destroyState, setDestroyState] = useState<DestroyStateValue>('');
+  const [destroyState, setDestroyState] = useState<DestroyStateValue>("");
   const show = (props?: Partial<ShowProps>) => {
     setModalList((prev) => [
       ...prev,
@@ -77,7 +77,7 @@ const useModal = () => {
       );
     });
 
-    root.render(<>{modalListComponents}</>);
+    root.render(modalListComponents);
   }, [modalList, onCloseModal]);
 
   useEffect(() => {
